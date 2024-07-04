@@ -1,4 +1,4 @@
-# 🚀 <> Desafio Frontend Aumo.ai </>
+# 🚀 <> Desafio Básico Frontend Aumo.ai </>
 
 ## 🧠 Sobre
 
