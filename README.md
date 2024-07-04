@@ -26,7 +26,7 @@ Baseado no [Layout](https://github.com/aumoai/challenge-front-basico/blob/main/f
 - Por favor, inclua no README as instruções de instalação do projeto
 - Sinta-se livre para incluir quaisquer observações ou melhorias
 - Você pode utilizar qualquer pacote de componentes, templates, etc, se achar necessário, desde que sejam Opensource com licença MIT ou equivalente
-- O layout nas imagens é um exemplo, não esperamos que o seu seja exatamente igual, use os recursos dos componenetes que escolher para montra a interface
+- O layout nas imagens é um exemplo, não esperamos que o seu seja exatamente igual, use os recursos dos componentes que escolher para montar a interface
 
 ## 😎 Seria legal
 - Fazer deploy na vercel, netlify ou em outro local de sua preferência e disponibilizar um link de visualização
@@ -39,7 +39,7 @@ Baseado no [Layout](https://github.com/aumoai/challenge-front-basico/blob/main/f
 
 Link da [API](https://randomuser.me/api/).
 
-*a Api pode demorar pra responder ou ficar fora do ar em alguns momentos (pense nisso quando for desenvolver).
+⚠️ a Api pode demorar pra responder ou ficar fora do ar em alguns momentos (pense nisso quando for desenvolver).
 
 ## ...
 
