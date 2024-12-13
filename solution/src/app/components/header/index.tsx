@@ -1,7 +1,7 @@
 export const Header = () => {
     return (
         <header>
-            <div>
+            <div className= "mx-auto w-full text-center bg-blue-300">
                 Header
             </div>
         </header>
