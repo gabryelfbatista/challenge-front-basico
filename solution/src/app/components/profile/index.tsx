@@ -4,9 +4,9 @@ import backgroundPic from '../../images/background_profile.jpg'
 
 export const Profile = () => {
     return (
-        <div className="max-h-screen-lg">
-            <div className="justify-items-center max-h-[500px] mt-10 max-w-screen-lg mx-auto shadow rounded"> 
-                <div className="rounded-t-lg h-40">
+        <div className="flex flex-col max-h-screen-lg max-w-screen-lg mx-auto">
+            <div className="max-h-full mt-10 w-full shadow rounded"> 
+                <div className="h-20 sm:h-28 md:h-48 lg:h-48">
                     <Image 
                         src={backgroundPic}
                         alt={'background picture'}
@@ -14,7 +14,7 @@ export const Profile = () => {
                     >
                     </Image>
                 </div>
-                <div className='relative mx-auto my-auto sm:h-20 sm:w-20 md:h-40 md:w-40 '>
+                <div className='relative mx-auto h-16 w-16 sm:h-32 sm:w-32 md:h-40 md:w-40 '>
                     <Image
                         src={profilePic}
                         alt={'profile picture'}
@@ -34,12 +34,12 @@ export const Profile = () => {
 
                     
             </div>
-            <div className="grid md:grid-cols-2 justify-between max-h-[400px] mt-2 max-w-screen-lg mx-auto rounded">
-                <div className="flex-col max-h-full justify-sart pl-6 mr-1 shadow">
-                    <div>Personal info</div>
+            <div className="grid md:grid-cols-2 justify-between max-h-[400px] mt-2 w-full mx-auto rounded">
+                <div className="flex-col max-h-full max-w-full justify-sart pl-6 mr-1 shadow">
+                    <div className='font-bold'>Personal info</div>
                     <div>About</div>
                 </div>
-                <div className="flex-col max-h-full justify-sart pl-6 ml-1 shadow">oi</div>
+                <div className="flex-col max-h-full sm:w-screen md:w-full justify-sart pl-6 ml-1 shadow">oi</div>
             </div>
         </div>
     )
