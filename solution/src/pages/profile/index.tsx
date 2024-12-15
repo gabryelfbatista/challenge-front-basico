@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import profilePic from '../../images/profile_picture.jpeg'
-import backgroundPic from '../../images/background_profile.jpg'
+import profilePic from '../../../public/profile_picture.jpeg'
+import backgroundPic from '../../../public/background_profile.jpg'
 
 export const Profile = () => {
     return (
