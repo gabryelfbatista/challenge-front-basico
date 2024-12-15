@@ -1,19 +1,39 @@
-"use client"
+'use client'
 import Image from 'next/image'
 import profilePic from '../../../public/profile_picture.jpeg'
 import backgroundPic from '../../../public/background_profile.jpg'
 import * as personalData from '../../database/personal-profile.json'
+import { useEffect, useState } from 'react'
+import { getRandomUser } from '@/app/actions'
 
 
-export default function ProfileCard({usersList}: any) {
-    let userData = usersList[0]
-    let usePersonalImages = false
-    if (userData == null) {
-        userData = personalData
-        usePersonalImages = true
+export default function ProfileCard() {
+    let [userData, setUserData] = useState(personalData)
+    let [usePersonalImages, setUsePersonalImages] = useState(true)
+   
+    let data:any = null
+    async function handleClick () {
+        const response = await getRandomUser()
+        data = response.results[0]
+        setUserData(data)
+        setUsePersonalImages(false)
     }
+    useEffect(() => {
+
+    }, [])
+
     return (
     <div className="max-h-full mt-10 w-full shadow rounded"> 
+        <div className='grid grid-cols-3 w-full'>
+                <div></div>
+                <div className='font-bold place-self-center self-center'>Find someone like you</div>
+                <button 
+                    className="place-self-end self-center bg-blue-500 text-white py-2 px-4 rounded-md"
+                    onClick={() => handleClick()}
+                >
+                    Next one
+                </button>
+            </div>
         <div className="h-14 sm:h-28 md:h-48 lg:h-80">
 
             <Image 
@@ -42,8 +62,8 @@ export default function ProfileCard({usersList}: any) {
             <button className="bg-blue-500 text-white mx-auto py-2 px-4 rounded-md">
                 Follow
             </button>
-            <div className='mx-auto my-5'>{userData.name.first} {userData.name.last}</div>
-            <div className='mx-auto mb-5'>{userData.location.city}, {userData.location.country}</div>
+            <div className='mx-auto my-5'>{userData?.name?.first} {userData?.name?.last}</div>
+            <div className='mx-auto mb-5'>{userData?.location?.city}, {userData?.location?.country}</div>
         </div>
 
             

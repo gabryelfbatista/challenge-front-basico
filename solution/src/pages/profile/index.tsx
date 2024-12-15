@@ -1,22 +1,14 @@
+import { getRandomUser } from '@/app/actions'
 import ProfileCard from '../../components/personal-profile/index'
+import * as personalData from '../../database/personal-profile.json'
 
 
-const getRandomUser = async() => {
-    const response = await fetch('https://randomuser.me/api/')
-    return response.json()
-}
+export const Profile = async() => {
 
-let usersList: Array<Object> = []
-
-export const Profile = async () => {
-
-    const data = await getRandomUser()
-    console.log(data.results[0])
-    let randomUserData = data.results[0]
-    // usersList.push(randomUserData)
     return (
         <div className="flex flex-col max-h-screen-lg w-4/5 mx-auto">
-            <ProfileCard usersList={usersList}/>
+            
+            <ProfileCard/>
             <div className="grid md:grid-cols-2 justify-between max-h-[400px] mt-2 w-full mx-auto rounded">
                 <div className="flex-col max-h-full max-w-full justify-sart pl-6 mr-1 shadow">
                     <div className='font-bold'>Personal info</div>
