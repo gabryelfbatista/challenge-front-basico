@@ -5,21 +5,46 @@ import backgroundPic from '../../../public/background_profile.jpg'
 import * as personalData from '../../database/personal-profile.json'
 import { useEffect, useState } from 'react'
 import { getRandomUser } from '@/app/actions'
+import { parseCookies, setCookie } from 'nookies'
 
 
 export default function ProfileCard() {
+    const cookies = parseCookies()
+    console.log(cookies)
+
     let [userData, setUserData] = useState(personalData)
     let [usePersonalImages, setUsePersonalImages] = useState(true)
+    const [usersList, setUsersList] = useState<any[]>([]);
    
     let data:any = null
     async function handleClick () {
         const response = await getRandomUser()
         data = response.results[0]
+        const updatedUsersList = [...usersList, data];
+
+        setUsersList(updatedUsersList);
         setUserData(data)
         setUsePersonalImages(false)
+
+        console.log(updatedUsersList);
+
+        // Salva a lista no cookie como JSON
+        setCookie(null, 'usersList', JSON.stringify(updatedUsersList), {
+            path: '/',
+            maxAge: 30 * 24 * 60 * 60, // Expira em 30 dias
+        });
+
     }
     useEffect(() => {
+        // Recupera o cookie e inicializa o estado, mantendo os dados predefinidos se não houver cookie
+        const storedUsersList = cookies.usersList ? JSON.parse(cookies.usersList) : [];
+        setUsersList(storedUsersList);
 
+        // // Se houver usuários salvos, inicializa com o último; caso contrário, usa os predefinidos
+        // if (storedUsersList.length > 0) {
+        //     setUserData(storedUsersList[storedUsersList.length - 1]);
+        //     setUsePersonalImages(false);
+        // }
     }, [])
 
     return (
