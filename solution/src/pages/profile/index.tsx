@@ -2,11 +2,20 @@ import Image from 'next/image'
 import profilePic from '../../../public/profile_picture.jpeg'
 import backgroundPic from '../../../public/background_profile.jpg'
 
-export const Profile = () => {
+const getRandomUser = async() => {
+    const response = await fetch('https://randomuser.me/api/')
+    return response.json()
+}
+
+export const Profile = async () => {
+    const data = await getRandomUser()
+    console.log(data.results[0])
+    let randomUserData = data.results[0]
+
     return (
-        <div className="flex flex-col max-h-screen-lg max-w-screen-lg mx-auto">
+        <div className="flex flex-col max-h-screen-lg w-4/5 mx-auto">
             <div className="max-h-full mt-10 w-full shadow rounded"> 
-                <div className="h-20 sm:h-28 md:h-48 lg:h-48">
+                <div className="h-14 sm:h-28 md:h-48 lg:h-80">
                     <Image 
                         src={backgroundPic}
                         alt={'background picture'}
@@ -14,9 +23,9 @@ export const Profile = () => {
                     >
                     </Image>
                 </div>
-                <div className='relative mx-auto h-16 w-16 sm:h-32 sm:w-32 md:h-40 md:w-40 '>
+                <div className='relative mx-auto h-20 w-20 sm:h-32 sm:w-32 md:h-40 md:w-40 '>
                     <Image
-                        src={profilePic}
+                        src={randomUserData.picture.large}
                         alt={'profile picture'}
                         fill
                         className="rounded-full object-cover object-center border-4 border-white shadow"
@@ -28,8 +37,8 @@ export const Profile = () => {
                     <button className="bg-blue-500 text-white mx-auto py-2 px-4 rounded-md">
                         Follow
                     </button>
-                    <div className='mx-auto my-5'>Nome</div>
-                    <div className='mx-auto mb-5'>Endereço</div>
+                    <div className='mx-auto my-5'>{randomUserData.name.first} {randomUserData.name.last}</div>
+                    <div className='mx-auto mb-5'>{randomUserData.location.city}, {randomUserData.location.country}</div>
                 </div>
 
                     
