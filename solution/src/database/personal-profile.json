@@ -1,0 +1,24 @@
+{
+    "name": {
+        "first": "Gabryel",
+        "last": "Batista"
+    },
+
+    "location": {
+        "street": {
+            "number": 32,
+            "name": "Rio Marinho"
+        },
+        "city": "Vitória",
+        "state": "Espírito Santo",
+        "country": "Brazil"
+    },
+
+    "email": "emailreal@gmail.com",
+    "phone": "(27)4002-8922",
+    "cell": "(27)91234-5678",
+    "picture": {
+        "large": "../../../public/profile_picture.jpeg",
+        "thumbnail": "../../../public/background_profile.jpg"
+    }
+}
