@@ -58,6 +58,7 @@ export const Header = () => {
                                                     alt={user.name?.first}
                                                     className="rounded-full object-cover"
                                                     fill
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                                 />
                                             </div>
                                             <div>

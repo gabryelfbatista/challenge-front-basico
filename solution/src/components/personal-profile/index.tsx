@@ -94,19 +94,19 @@ export default function ProfileCard() {
     }
 
     // Função para adicionar um usuário à lista de sugeridos
-    function addToSuggestedUsers(user: MinimalUser) {
-        // Garantir que o personalData não será adicionado
+    const addToSuggestedUsers = (user: MinimalUser) => {
         if (user.login.uuid !== personalData.login.uuid) {
-            const updatedSuggestedUsers = [...suggestedUsers, user];
-            setSuggestedUsers(updatedSuggestedUsers);
-
-            // Atualizar cookies de usuários sugeridos
-            setCookie(null, 'suggestedUsers', JSON.stringify(updatedSuggestedUsers), {
-                path: '/',
-                maxAge: 1 * 60 * 60, // 1 hora
+            setSuggestedUsers((prevSuggestedUsers) => {
+                const updatedSuggestedUsers = [...prevSuggestedUsers, user];
+                // Atualizar cookies de usuários sugeridos
+                setCookie(null, 'suggestedUsers', JSON.stringify(updatedSuggestedUsers), {
+                    path: '/',
+                    maxAge: 1 * 60 * 60, // 1 hora
+                });
+                return updatedSuggestedUsers;
             });
         }
-    }
+    };
 
     // Verificar se o usuário já foi seguido
     const isFollowed = followedUsers.some((user) => user.login?.uuid === userData.login?.uuid);
