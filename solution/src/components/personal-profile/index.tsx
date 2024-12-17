@@ -93,6 +93,21 @@ export default function ProfileCard() {
         }
     }
 
+    // Função para adicionar um usuário à lista de sugeridos
+    function addToSuggestedUsers(user: MinimalUser) {
+        // Garantir que o personalData não será adicionado
+        if (user.login.uuid !== personalData.login.uuid) {
+            const updatedSuggestedUsers = [...suggestedUsers, user];
+            setSuggestedUsers(updatedSuggestedUsers);
+
+            // Atualizar cookies de usuários sugeridos
+            setCookie(null, 'suggestedUsers', JSON.stringify(updatedSuggestedUsers), {
+                path: '/',
+                maxAge: 1 * 60 * 60, // 1 hora
+            });
+        }
+    }
+
     // Verificar se o usuário já foi seguido
     const isFollowed = followedUsers.some((user) => user.login?.uuid === userData.login?.uuid);
 
@@ -101,25 +116,10 @@ export default function ProfileCard() {
 
     // Se o usuário não está seguido, adicioná-lo aos sugeridos
     useEffect(() => {
-        const addToSuggestedUsers = (user: MinimalUser) => {
-            // Garantir que o personalData não será adicionado
-            if (user.login.uuid !== personalData.login.uuid) {
-                const updatedSuggestedUsers = [...suggestedUsers, user];
-                setSuggestedUsers(updatedSuggestedUsers);
-    
-                // Atualizar cookies de usuários sugeridos
-                setCookie(null, 'suggestedUsers', JSON.stringify(updatedSuggestedUsers), {
-                    path: '/',
-                    maxAge: 1 * 60 * 60, // 1 hora
-                });
-            }
-        };
-    
         if (!isFollowed) {
             addToSuggestedUsers(userData);  // Adiciona o usuário atual à lista de sugeridos se não for seguido e não for o próprio
         }
-    }, [userData, isFollowed, suggestedUsers]);  // Ajuste nas dependências
-    
+    }, [userData]);
 
     return (
         <div className="flex flex-col w-full max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
@@ -141,7 +141,8 @@ export default function ProfileCard() {
                     src={usePersonalImages ? backgroundPic : userData.picture?.thumbnail}
                     alt="background picture"
                     className="object-cover w-full h-full"
-                    layout="fill"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute bottom-[-50px] left-1/2 transform -translate-x-1/2 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40">
                     <Image
@@ -149,6 +150,7 @@ export default function ProfileCard() {
                         alt="profile picture"
                         fill
                         className="rounded-full border-4 border-white shadow-xl object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                 </div>
             </div>

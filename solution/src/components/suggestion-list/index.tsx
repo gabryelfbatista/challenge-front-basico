@@ -68,6 +68,7 @@ export default function SuggestionUsersList() {
                                 alt={`${user.name?.first} ${user.name?.last}`}
                                 fill
                                 className="rounded-full object-cover"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <div className="mt-3 text-center">

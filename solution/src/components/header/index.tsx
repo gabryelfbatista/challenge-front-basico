@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { parseCookies } from 'nookies';
 import profilePic from '../../../public/profile_picture.jpeg';
-import * as personalData from '../../database/personal-profile.json'
+import personalData from '../../database/personal-profile.json'
 
 export const Header = () => {
     const [followedUsers, setFollowedUsers] = useState<any[]>([]);
