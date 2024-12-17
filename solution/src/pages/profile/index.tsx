@@ -3,7 +3,7 @@ import ProfileCard from '../../components/personal-profile/index'
 import SuggestionUsersList from '@/components/suggestion-list'
 
 
-export default function Profile () {
+export default function Profile() {
 
     return (
         <div className="flex flex-col max-h-screen-lg w-4/5 mx-auto bg-gray-50">
