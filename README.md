@@ -51,4 +51,17 @@ Caso tenha dúvidas, envie uma mensagem para o seu contato.
 ## Boa sorte!
 Nossa análise vai além do resultado final então se você tiver um problema implementando algum detalhe nos envie a sua solução mesmo assim.
 
+## Como executar
+Navegue para a pasta solution e siga os passos:
+
+Instale as dependencias
+```
+npm install
+```
+
+Rode a aplicação
+```
+npm run dev
+```
+
 
