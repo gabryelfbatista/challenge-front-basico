@@ -93,21 +93,6 @@ export default function ProfileCard() {
         }
     }
 
-    // Função para adicionar um usuário à lista de sugeridos
-    function addToSuggestedUsers(user: MinimalUser) {
-        // Garantir que o personalData não será adicionado
-        if (user.login.uuid !== personalData.login.uuid) {
-            const updatedSuggestedUsers = [...suggestedUsers, user];
-            setSuggestedUsers(updatedSuggestedUsers);
-
-            // Atualizar cookies de usuários sugeridos
-            setCookie(null, 'suggestedUsers', JSON.stringify(updatedSuggestedUsers), {
-                path: '/',
-                maxAge: 1 * 60 * 60, // 1 hora
-            });
-        }
-    }
-
     // Verificar se o usuário já foi seguido
     const isFollowed = followedUsers.some((user) => user.login?.uuid === userData.login?.uuid);
 
@@ -116,10 +101,25 @@ export default function ProfileCard() {
 
     // Se o usuário não está seguido, adicioná-lo aos sugeridos
     useEffect(() => {
+        const addToSuggestedUsers = (user: MinimalUser) => {
+            // Garantir que o personalData não será adicionado
+            if (user.login.uuid !== personalData.login.uuid) {
+                const updatedSuggestedUsers = [...suggestedUsers, user];
+                setSuggestedUsers(updatedSuggestedUsers);
+    
+                // Atualizar cookies de usuários sugeridos
+                setCookie(null, 'suggestedUsers', JSON.stringify(updatedSuggestedUsers), {
+                    path: '/',
+                    maxAge: 1 * 60 * 60, // 1 hora
+                });
+            }
+        };
+    
         if (!isFollowed) {
             addToSuggestedUsers(userData);  // Adiciona o usuário atual à lista de sugeridos se não for seguido e não for o próprio
         }
-    }, [userData, isFollowed, addToSuggestedUsers]);
+    }, [userData, isFollowed, suggestedUsers]);  // Ajuste nas dependências
+    
 
     return (
         <div className="flex flex-col w-full max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
