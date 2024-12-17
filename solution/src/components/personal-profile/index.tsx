@@ -119,7 +119,7 @@ export default function ProfileCard() {
         if (!isFollowed) {
             addToSuggestedUsers(userData);  // Adiciona o usuário atual à lista de sugeridos se não for seguido e não for o próprio
         }
-    }, [userData]);
+    }, [userData, isFollowed, addToSuggestedUsers]);
 
     return (
         <div className="flex flex-col w-full max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
