@@ -64,4 +64,7 @@ Rode a aplicação
 npm run dev
 ```
 
+A aplicação também está disponível no link:
+
+[usersLikeMe](https://challenge-front-basico.vercel.app)
 
