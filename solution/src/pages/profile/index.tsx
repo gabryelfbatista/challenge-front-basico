@@ -1,7 +1,5 @@
 
-import { getRandomUser } from '@/app/actions'
 import ProfileCard from '../../components/personal-profile/index'
-import * as personalData from '../../database/personal-profile.json'
 import SuggestionUsersList from '@/components/suggestion-list'
 
 
