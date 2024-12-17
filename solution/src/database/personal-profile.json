@@ -1,4 +1,7 @@
 {
+    "login": {
+        "uuid": "personaluuid1234"
+    },
     "name": {
         "first": "Gabryel",
         "last": "Batista"
