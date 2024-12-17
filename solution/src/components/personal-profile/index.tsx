@@ -115,6 +115,7 @@ export default function ProfileCard() {
     const isOwnProfile = userData.login?.uuid === personalData.login?.uuid;
 
     // Se o usuário não está seguido, adicioná-lo aos sugeridos
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         if (!isFollowed) {
             addToSuggestedUsers(userData);  // Adiciona o usuário atual à lista de sugeridos se não for seguido e não for o próprio
